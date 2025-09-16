@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema de Relatórios</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <h1>Sistema de Relatórios</h1>
+
+  <div id="menu">
+    <button onclick="abrirFormulario('incidente')">Incidente</button>
+    <button onclick="abrirFormulario('solicitacao')">Solicitação</button>
+    <button onclick="abrirFormulario('laudo')">Laudo Técnico</button>
+    <button onclick="abrirFormulario('maquina')">Troca de Máquina</button>
+    <button onclick="abrirFormulario('periferico')">Troca de Periferico</button>
+    <button onclick="abrirFormulario('falta')">Não comparecimento</button>
+  </div>
+
+  <div id="conteudo"></div>
+
+
+  <script src="app.js"></script>
+</body>
+
+</html>

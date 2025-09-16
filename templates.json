@@ -1,0 +1,206 @@
+{
+    "maquina": {
+        "titulo": "Troca de Máquina",
+        "campos": [
+            {
+                "id": "falha",
+                "label": "Falha Reportada"
+            },
+            {
+                "id": "causa",
+                "label": "Causa Raiz"
+            },
+            {
+                "id": "novoSerie",
+                "label": "Número de Série (Novo Equipamento)"
+            },
+            {
+                "id": "novoModelo",
+                "label": "Modelo Novo"
+            },
+            {
+                "id": "novoMemoria",
+                "label": "Memória (Novo)"
+            },
+            {
+                "id": "antigoSerie",
+                "label": "Número de Série (Antigo Equipamento)"
+            },
+            {
+                "id": "antigoModelo",
+                "label": "Modelo Antigo"
+            },
+            {
+                "id": "antigoMemoria",
+                "label": "Memória (Antigo)"
+            }
+        ],
+        "template": "[Field Service - Suporte Local – Troca de equipamento]\nPassível de solução remota? Não\nMotivo: Troca de Notebook\nFalha Reportada: {{falha}}\nCausa Raiz: {{causa}}\nSolução: Realizado a troca da máquina\n\n[Novo Equipamento]\nNúmero de Série: {{novoSerie}}\nModelo Novo: {{novoModelo}}\nMemória: {{novoMemoria}}\n\n[Equipamento Antigo]\nNúmero de Série: {{antigoSerie}}\nModelo Antigo: {{antigoModelo}}\nMemória: {{antigoMemoria}}\n\nTermo anexado no Portal de Assinaturas."
+    },
+    "incidente": {
+        "titulo": "Incidente",
+        "campos": [
+            {
+                "id": "passivelRemoto",
+                "label": "Passível de solução remota?"
+            },
+            {
+                "id": "falhaReportada",
+                "label": "Falha Reportada"
+            },
+            {
+                "id": "causaRaiz",
+                "label": "Causa Raiz"
+            },
+            {
+                "id": "solucao",
+                "label": "Solução"
+            },
+            {
+                "id": "validadoPor",
+                "label": "Validado por"
+            },
+            {
+                "id": "modelo",
+                "label": "Modelo"
+            },
+            {
+                "id": "memoria",
+                "label": "Memória"
+            },
+            {
+                "id": "hostname",
+                "label": "Hostname"
+            },
+            {
+                "id": "numeroSerie",
+                "label": "Nº de Série"
+            }
+        ],
+        "template": "[Field Service - Suporte Local]\nPassível de solução remota? {{passivelRemoto}}\nMotivo do atendimento no Local: COLABORADOR(A) SE AGENDOU NO CONEXÃO LOCAL\nFalha Reportada: {{falhaReportada}}\nCausa Raiz: {{causaRaiz}}\nSolução: {{solucao}}\nValidado por: {{validadoPor}}\nModelo: {{modelo}}\nMemória: {{memoria}}\nHostname: {{hostname}}\nNº de Série: {{numeroSerie}}\n\nAh, por gentileza, avalie o meu atendimento. Isso ajudará a demonstrar a qualidade do meu trabalho. Muito obrigado (a)!"
+    },
+    "solicitacao": {
+        "titulo": "Solicitação",
+        "campos": [
+            {
+                "id": "dataEntrega",
+                "label": "Data da entrega"
+            },
+            {
+                "id": "responsavel",
+                "label": "Responsável pela entrega"
+            },
+            {
+                "id": "usuario",
+                "label": "Usuário atendido"
+            },
+            {
+                "id": "cmdb",
+                "label": "Realizada atualização do CMDB? (Sim/Não)"
+            }
+        ],
+        "template": "[Field Service - Suporte Local]\nChamado encerrado com sucesso após a entrega de periférico solicitado.\nData da entrega: {{dataEntrega}}\nResponsável pela entrega: {{responsavel}}\nUsuário atendido: {{usuario}}\nRealizada atualização do CMDB?: {{cmdb}}\n\nAh, por gentileza, avalie o meu atendimento. Isso ajudará a demonstrar a qualidade do meu trabalho. Muito obrigado (a)!"
+    },
+    "laudo": {
+        "titulo": "Laudo Técnico - Análise de Hardware",
+        "campos": [
+            {
+                "id": "chamado",
+                "label": "Chamado incidente"
+            },
+            {
+                "id": "colaborador",
+                "label": "Nome do Colaborador afetado"
+            },
+            {
+                "id": "email",
+                "label": "E-mail Corporativo"
+            },
+            {
+                "id": "setor",
+                "label": "ADM ou Loja (ADM/LOJA/CALL CENTER)"
+            },
+            {
+                "id": "telefone",
+                "label": "Telefone de Contato com DDD"
+            },
+            {
+                "id": "modelo",
+                "label": "Marca e Modelo do Equipamento"
+            },
+            {
+                "id": "imei",
+                "label": "IMEI"
+            },
+            {
+                "id": "serie",
+                "label": "Número de Série (S/N)"
+            },
+            {
+                "id": "hostname",
+                "label": "Hostname"
+            },
+            {
+                "id": "predio",
+                "label": "Prédio (Sede / Loja)"
+            },
+            {
+                "id": "problema",
+                "label": "Problema relatado pelo usuário"
+            },
+            {
+                "id": "detalheProblema",
+                "label": "Detalhe o problema identificado pelo técnico"
+            },
+            {
+                "id": "testes",
+                "label": "Detalhe os testes realizados"
+            },
+            {
+                "id": "solicitacao",
+                "label": "Solicitação após avaliação técnica"
+            },
+            {
+                "id": "danoAcidental",
+                "label": "Dano Acidental (Sim/Não)"
+            },
+            {
+                "id": "endereco",
+                "label": "Endereço Atualizado para envio"
+            }
+        ],
+        "template": "Laudo Técnico - Análise de Hardware\n\nChamado incidente: {{chamado}}\nNome do Colaborador afetado: {{colaborador}}\nE-mail Corporativo: {{email}}\nADM ou Loja: {{setor}}\nTelefone de Contato com DDD: {{telefone}}\nMarca e Modelo do Equipamento: {{modelo}}\nIMEI: {{imei}}\nS/N: {{serie}}\nHostname: {{hostname}}\nPrédio: {{predio}}\n\nProblema relatado pelo usuário: {{problema}}\nDetalhe o problema identificado pelo técnico: {{detalheProblema}}\nDetalhe os testes realizados: {{testes}}\nSolicitação após avaliação técnica: {{solicitacao}}\nDano Acidental: {{danoAcidental}}\n\nEndereço Atualizado para envio necessidade: {{endereco}}\nRua Iapo, 1408, 2º Andar, Prado Velho - Curitiba - PR – Brasil CEP 80215 223"
+    },
+    "periferico": {
+        "titulo": "Entrega de Periférico",
+        "campos": [
+            {
+                "id": "dataEntrega",
+                "label": "Data da entrega"
+            },
+            {
+                "id": "responsavel",
+                "label": "Responsável pela entrega (Técnico)"
+            },
+            {
+                "id": "usuario",
+                "label": "Usuário atendido"
+            },
+            {
+                "id": "cmdb",
+                "label": "Realizada atualização do CMDB? (Sim/Não)"
+            }
+        ],
+        "template": "[Field Service - Suporte Local]\nChamado encerrado com sucesso após a entrega de periférico solicitado.\nData da entrega: {{dataEntrega}}\nResponsável pela entrega: {{responsavel}}\nUsuário atendido: {{usuario}}\nRealizada atualização do CMDB?: {{cmdb}}\n\nAh, por gentileza, avalie o meu atendimento. Isso ajudará a demonstrar a qualidade do meu trabalho. Muito obrigado (a)!"
+    },
+    "falta": {
+        "titulo": "Não comparecimento",
+        "campos": [
+            {
+                "id": "usuario",
+                "label": "Nome do colaborador"
+            }
+        ],
+        "template":"[Field Service - Suporte Local] \n\nEstimado (a) {{usuario}} \n\nDevido ao não comparecimento na agenda na data e local, o seu chamado foi encerrado. Caso ainda precise de atendimento solicitamos que  efetue um novo agendamento através do link:   \n\nLink de Agendamento: \n\nhttps: //bit.ly/espa%C3%A7oconexaoti \n\nCaso tenha alguma dúvida sobre como agendar, consulte: \n\nhttps: //intranet.telefonica.com.br/noticias/1478731281904-not-precisa-de-um-servico-de-microinformatica   "
+    }
+}
