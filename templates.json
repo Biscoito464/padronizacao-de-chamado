@@ -38,6 +38,28 @@
         "template": "[Field Service - Suporte Local – Troca de equipamento]\nPassível de solução remota? Não\nMotivo: Troca de Notebook\nFalha Reportada: {{falha}}\nCausa Raiz: {{causa}}\nSolução: Realizado a troca da máquina\n\n[Novo Equipamento]\nNúmero de Série: {{novoSerie}}\nModelo Novo: {{novoModelo}}\nMemória: {{novoMemoria}}\n\n[Equipamento Antigo]\nNúmero de Série: {{antigoSerie}}\nModelo Antigo: {{antigoModelo}}\nMemória: {{antigoMemoria}}\n\nTermo anexado no Portal de Assinaturas."
     },
     "incidente": {
+        "titulo": "Abertura de Incidente",
+        "campos": [
+            {
+                "id": "descricao",
+                "label": "Descrição do problema relatado pelo usuário"
+            },
+            {
+                "id": "modelo",
+                "label": "Marca e modelo do equipamento"
+            },
+            {
+                "id": "numeroSerie",
+                "label": "Número de série"
+            },
+            {
+                "id": "hostname",
+                "label": "Hostname"
+            }
+        ],
+        "template": "=== Abertura do Incidente ===\n\nDescrição do problema relatado pelo usuário:\n{{descricao}}\n\nMarca e modelo do equipamento: {{modelo}}\n\nNúmero de série: {{numeroSerie}}\n\nHostname: {{hostname}}"
+    },
+    "incidente_fechamento": {
         "titulo": "Incidente",
         "campos": [
             {
@@ -201,6 +223,6 @@
                 "label": "Nome do colaborador"
             }
         ],
-        "template":"[Field Service - Suporte Local] \n\nEstimado (a) {{usuario}} \n\nDevido ao não comparecimento na agenda na data e local, o seu chamado foi encerrado. Caso ainda precise de atendimento solicitamos que  efetue um novo agendamento através do link:   \n\nLink de Agendamento: \n\nhttps: //bit.ly/espa%C3%A7oconexaoti \n\nCaso tenha alguma dúvida sobre como agendar, consulte: \n\nhttps: //intranet.telefonica.com.br/noticias/1478731281904-not-precisa-de-um-servico-de-microinformatica   "
+        "template": "[Field Service - Suporte Local] \n\nEstimado (a) {{usuario}} \n\nDevido ao não comparecimento na agenda na data e local, o seu chamado foi encerrado. Caso ainda precise de atendimento solicitamos que  efetue um novo agendamento através do link:   \n\nLink de Agendamento: \n\nhttps: //bit.ly/espa%C3%A7oconexaoti \n\nCaso tenha alguma dúvida sobre como agendar, consulte: \n\nhttps: //intranet.telefonica.com.br/noticias/1478731281904-not-precisa-de-um-servico-de-microinformatica   "
     }
 }

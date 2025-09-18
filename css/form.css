@@ -1,5 +1,5 @@
 /* ===== Formulários ===== */
-#conteudo h2{
+#conteudo h2 {
   text-align: center;
   margin-bottom: 20px;
   color: #2c3e50;
@@ -11,8 +11,8 @@ form {
   background: #fff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
 }
 
 form label {
@@ -29,7 +29,7 @@ form input {
   border-radius: 5px;
 }
 
-form button[type="submit"] {
+form button[type="submit"], [type="button"] {
   margin-top: 20px;
   width: 100%;
   background: #28a745;

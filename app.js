@@ -28,6 +28,8 @@ function abrirFormulario(tipo, container = document.getElementById("conteudo")) 
       botao.textContent = "Gerar Relatório";
       form.appendChild(botao);
 
+      
+
       // Área de resultado
       const resultado = document.createElement("div");
       resultado.className = "resultado";
