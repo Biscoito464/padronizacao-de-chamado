@@ -1,62 +1,96 @@
-let templates = {};
+function abrirFormulario(tipo, container = document.getElementById("conteudo")) {
+  fetch("templates.json")
+    .then(res => res.json())
+    .then(data => {
+      const template = data[tipo];
+      container.innerHTML = ""; // limpa só o container usado
 
-// Carregar JSON com os templates
-fetch("templates.json")
-  .then(res => res.json())
-  .then(data => {
-    templates = data;
-  })
-  .catch(err => console.error("Erro ao carregar templates.json", err));
+      const form = document.createElement("form");
 
-function abrirFormulario(tipoChamado) {
-  const conteudo = document.getElementById("conteudo");
-  const config = templates[tipoChamado];
+      // Título
+      const titulo = document.createElement("h2");
+      titulo.textContent = template.titulo;
+      form.appendChild(titulo);
 
-  if (!config) {
-    conteudo.innerHTML = "<p>⚠️ Template não encontrado.</p>";
-    return;
-  }
+      // Campos do formulário
+      template.campos.forEach(campo => {
+        const label = document.createElement("label");
+        label.textContent = campo.label;
+        const input = document.createElement("input");
+        input.id = campo.id;
+        form.appendChild(label);
+        form.appendChild(input);
+      });
 
-  // Construir formulário dinamicamente
-  let formHtml = `<h2>${config.titulo}</h2><form id="formRelatorio">`;
-  config.campos.forEach(campo => {
-    formHtml += `
-      <label>${campo.label}:</label>
-      <input type="text" id="${campo.id}" required>
-    `;
-  });
-  formHtml += `<button type="submit">Gerar Relatório</button></form>
-    <div class="resultado" id="resultado"></div>
-    <button id="baixarBtn" style="display:none;">Baixar Relatório</button>`;
+      // Botão Gerar
+      const botao = document.createElement("button");
+      botao.type = "submit";
+      botao.textContent = "Gerar Relatório";
+      form.appendChild(botao);
 
-  conteudo.innerHTML = formHtml;
+      // Área de resultado
+      const resultado = document.createElement("div");
+      resultado.className = "resultado";
+      container.appendChild(resultado);
 
-  // Lógica do submit
-  document.getElementById("formRelatorio").addEventListener("submit", function(e) {
-    e.preventDefault();
+      // Botão Baixar (inicialmente oculto)
+      const baixarBtn = document.createElement("button");
+      baixarBtn.id = "baixarBtn";
+      baixarBtn.style.display = "none";
+      baixarBtn.textContent = "Baixar Relatório";
+      container.appendChild(baixarBtn);
 
-    // Substituir variáveis no template
-    let output = config.template;
-    config.campos.forEach(campo => {
-      const value = document.getElementById(campo.id).value;
-      output = output.replace(`{{${campo.id}}}`, value);
+      // Evento submit -> gera relatório
+      form.onsubmit = (e) => {
+        e.preventDefault();
+
+        let texto = template.template;
+
+        template.campos.forEach(campo => {
+          const valor = document.getElementById(campo.id).value || "";
+          texto = texto.replace(`{{${campo.id}}}`, valor);
+        });
+
+        resultado.textContent = texto;
+        baixarBtn.style.display = "block";
+
+        // baixar relatório
+        baixarBtn.onclick = () => {
+          const blob = new Blob([texto], { type: "text/plain" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = `${tipo}_relatorio.txt`;
+          a.click();
+          URL.revokeObjectURL(url);
+        };
+      };
+
+      // adiciona formulário e botões
+      container.appendChild(form);
+
+      if (tipo === "incidente") {
+        const botaoFechamento = document.createElement("button");
+        botaoFechamento.textContent = "Fechar Incidente";
+        botaoFechamento.type = "button";
+        botaoFechamento.style.marginTop = "15px";
+
+        botaoFechamento.onclick = () => {
+          // verifica se já existe um formulário de fechamento
+          let divFechamento = document.getElementById("form-fechamento");
+          if (!divFechamento) {
+            divFechamento = document.createElement("div");
+            divFechamento.id = "form-fechamento"; // id fixo para identificar
+            container.appendChild(divFechamento);
+            abrirFormulario("incidente_fechamento", divFechamento);
+          }
+        };
+
+        form.appendChild(botaoFechamento);
+      }
+
+    })
+    .catch(err => {
+      console.error("Erro ao carregar templates.json:", err);
     });
-
-    document.getElementById("resultado").innerText = output;
-
-    // Ativar botão de download
-    const btn = document.getElementById("baixarBtn");
-    btn.style.display = "inline-block";
-    btn.onclick = () => baixarArquivo(output, tipoChamado);
-  });
-}
-
-function baixarArquivo(conteudo, prefixo) {
-  const blob = new Blob([conteudo], { type: "text/plain" });
-  const link = document.createElement("a");
-  const data = new Date();
-  const nomeArquivo = `${prefixo}_${data.getFullYear()}${String(data.getMonth()+1).padStart(2,"0")}${String(data.getDate()).padStart(2,"0")}_${String(data.getHours()).padStart(2,"0")}${String(data.getMinutes()).padStart(2,"0")}${String(data.getSeconds()).padStart(2,"0")}.txt`;
-  link.href = URL.createObjectURL(blob);
-  link.download = nomeArquivo;
-  link.click();
 }
