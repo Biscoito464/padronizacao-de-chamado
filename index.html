@@ -4,23 +4,41 @@
 <head>
   <meta charset="UTF-8">
   <title>Sistema de Relatórios</title>
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/style2.css">
 </head>
 
 <body>
-  <h1>Sistema de Relatórios</h1>
+  <img src="./img/logo2.png" alt="logo stefanini"  class="logo">
+  <h1 class="titulo">Sistema de Relatórios</h1>
 
-  <div id="menu">
-    <button onclick="abrirFormulario('incidente')">Incidente</button>
-    <button onclick="abrirFormulario('solicitacao')">Solicitação</button>
-    <button onclick="abrirFormulario('laudo')">Laudo Técnico</button>
-    <button onclick="abrirFormulario('maquina')">Troca de Máquina</button>
-    <button onclick="abrirFormulario('periferico')">Troca de Periferico</button>
-    <button onclick="abrirFormulario('falta')">Não comparecimento</button>
-  </div>
+  <nav class="navbar">
+    <!-- Ícone hambúrguer -->
+    <div class="container">
+      <input src="./img/hamburger.png" type="checkbox" id="menu" class="container__botao">
+      <label for="menu" class="container__rotulo">
+        <span class="cabecalho__menu__haburguer" ></span>
+      </label>
+      <ul class="lista-menu">
+        <li class="lista-menu__item">
+          <button onclick="abrirFormulario('incidente')">Incidente</button>
+        </li>
+        <li class="lista-menu__item">
+          <button onclick="abrirFormulario('laudo')">Laudo Técnico</button>
+        </li>
+        <li class="lista-menu__item">
+          <button onclick="abrirFormulario('maquina')">Troca de Máquina</button>
+        </li>
+        <li class="lista-menu__item">
+          <button onclick="abrirFormulario('periferico')">Troca de Periférico</button>
+        </li>
+        <li class="lista-menu__item">
+          <button onclick="abrirFormulario('falta')">Não comparecimento</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
   <div id="conteudo"></div>
-
 
   <script src="app.js"></script>
 </body>

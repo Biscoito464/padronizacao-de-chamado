@@ -5,7 +5,7 @@
   flex-wrap: wrap;
   gap: 15px;
   margin-bottom: 30px;
-  border: 2,2,2,2px solid red;
+  transition: 0.3s;
 }
 
 #menu button {
@@ -21,4 +21,45 @@
 
 #menu button:hover {
   background: #0056b3;
+}
+
+/* ===== Ícone hambúrguer ===== */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  padding: 10px;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 768px) {
+  /* Esconde o menu por padrão no mobile */
+  #menu {
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: -100%;
+    background: #f9f9f9;
+    width: 200px;
+    padding: 15px;
+    border: none; /* tira a borda vermelha no mobile */
+  }
+
+  #menu.active {
+    right: 10px; /* aparece o menu */
+    border: 2px solid #007bff;
+  }
+
+  .menu-toggle {
+    display: flex; /* só aparece no mobile */
+  }
 }

@@ -1,6 +1,7 @@
 @import url(./form.css);
 @import url(./menu.css);
 @import url(./resultado.css);
+@import url(./listaMenu.css);
 
 /* ===== Reset Básico ===== */
 * {
@@ -11,8 +12,10 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #f4f6f9;
-  color: #333;
+  background: linear-gradient(45deg, #0026ff, #5d5fee, #796bfa, #0026ff);
+  height: 100vh;
+  margin: 0;
+  color: #000000;
   padding: 20px;
 }
 
@@ -20,7 +23,7 @@ body {
 h1 {
   text-align: center;
   margin-bottom: 30px;
-  color: #2c3e50;
+  color: #ffffff;
 }
 
 

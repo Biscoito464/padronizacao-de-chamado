@@ -57,7 +57,7 @@
                 "label": "Hostname"
             }
         ],
-        "template": "=== Abertura do Incidente ===\n\nDescrição do problema relatado pelo usuário:\n{{descricao}}\n\nMarca e modelo do equipamento: {{modelo}}\n\nNúmero de série: {{numeroSerie}}\n\nHostname: {{hostname}}"
+        "template": "=== Abertura do Incidente ===\n\nDescrição do problema relatado pelo usuário: {{descricao}}\nMarca e modelo do equipamento: {{modelo}}\nNúmero de série: {{numeroSerie}}\nHostname: {{hostname}}"
     },
     "incidente_fechamento": {
         "titulo": "Incidente",
@@ -83,45 +83,23 @@
                 "label": "Validado por"
             },
             {
-                "id": "modelo",
+                "id": "modeloFechamento",
                 "label": "Modelo"
             },
             {
-                "id": "memoria",
+                "id": "memoriaFechamento",
                 "label": "Memória"
             },
             {
-                "id": "hostname",
+                "id": "hostnameFechamento",
                 "label": "Hostname"
             },
             {
-                "id": "numeroSerie",
+                "id": "numeroSerieFechamento",
                 "label": "Nº de Série"
             }
         ],
-        "template": "[Field Service - Suporte Local]\nPassível de solução remota? {{passivelRemoto}}\nMotivo do atendimento no Local: COLABORADOR(A) SE AGENDOU NO CONEXÃO LOCAL\nFalha Reportada: {{falhaReportada}}\nCausa Raiz: {{causaRaiz}}\nSolução: {{solucao}}\nValidado por: {{validadoPor}}\nModelo: {{modelo}}\nMemória: {{memoria}}\nHostname: {{hostname}}\nNº de Série: {{numeroSerie}}\n\nAh, por gentileza, avalie o meu atendimento. Isso ajudará a demonstrar a qualidade do meu trabalho. Muito obrigado (a)!"
-    },
-    "solicitacao": {
-        "titulo": "Solicitação",
-        "campos": [
-            {
-                "id": "dataEntrega",
-                "label": "Data da entrega"
-            },
-            {
-                "id": "responsavel",
-                "label": "Responsável pela entrega"
-            },
-            {
-                "id": "usuario",
-                "label": "Usuário atendido"
-            },
-            {
-                "id": "cmdb",
-                "label": "Realizada atualização do CMDB? (Sim/Não)"
-            }
-        ],
-        "template": "[Field Service - Suporte Local]\nChamado encerrado com sucesso após a entrega de periférico solicitado.\nData da entrega: {{dataEntrega}}\nResponsável pela entrega: {{responsavel}}\nUsuário atendido: {{usuario}}\nRealizada atualização do CMDB?: {{cmdb}}\n\nAh, por gentileza, avalie o meu atendimento. Isso ajudará a demonstrar a qualidade do meu trabalho. Muito obrigado (a)!"
+        "template": "[Field Service - Suporte Local]\nPassível de solução remota? {{passivelRemoto}}\nMotivo do atendimento no Local: COLABORADOR(A) SE AGENDOU NO CONEXÃO LOCAL\nFalha Reportada: {{falhaReportada}}\nCausa Raiz: {{causaRaiz}}\nSolução: {{solucao}}\nValidado por: {{validadoPor}}\nModelo: {{modeloFechamento}}\nMemória: {{memoriaFechamento}}\nHostname: {{hostnameFechamento}}\nNº de Série: {{numeroSerieFechamento}}\n\nAh, por gentileza, avalie o meu atendimento. Isso ajudará a demonstrar a qualidade do meu trabalho. Muito obrigado (a)!"
     },
     "laudo": {
         "titulo": "Laudo Técnico - Análise de Hardware",
