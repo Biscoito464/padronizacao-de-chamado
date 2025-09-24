@@ -1,0 +1,56 @@
+/* ================================
+   Ajustes Responsivos
+   ================================ */
+
+/* Telas muito pequenas (até 480px) */
+@media (max-width: 480px) {
+    .titulo {
+        font-size: 18px;
+    }
+
+    .form-wrapper {
+        padding: 14px 12px;
+    }
+
+    .relatorio-form h2 {
+        font-size: 18px;
+    }
+
+    input,
+    select,
+    textarea {
+        font-size: 13px;
+        padding: 10px 12px;
+    }
+
+    .acoes {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .acoes button {
+        width: 100%;
+    }
+}
+
+/* Tablets (481px até 768px) */
+@media (max-width: 768px) {
+    main {
+        padding: 0 12px;
+    }
+
+    .form-wrapper {
+        padding: 16px 14px;
+    }
+
+    .acoes {
+        justify-content: center;
+    }
+}
+
+/* Telas grandes (acima de 1200px) */
+@media (min-width: 1200px) {
+    .form-wrapper {
+        max-width: 900px;
+    }
+}

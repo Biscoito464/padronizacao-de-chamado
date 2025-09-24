@@ -3,21 +3,33 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sistema de Relatórios para gestão e automação de chamados.">
+  <meta name="keywords" content="relatórios, chamados, sistema, suporte técnico, automação">
+  <meta name="author" content="Caetano Tagliari">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="robots" content="index, follow">
   <title>Sistema de Relatórios</title>
-  <link rel="stylesheet" href="./css/style2.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" href="./img/logo.webp">
+
 </head>
 
 <body>
-  <img src="./img/logo2.png" alt="logo stefanini"  class="logo">
+  <img src="./img/logo2.png" alt="logo stefanini" class="logo">
   <h1 class="titulo">Sistema de Relatórios</h1>
 
   <nav class="navbar">
-    <!-- Ícone hambúrguer -->
     <div class="container">
-      <input src="./img/hamburger.png" type="checkbox" id="menu" class="container__botao">
-      <label for="menu" class="container__rotulo">
-        <span class="cabecalho__menu__haburguer" ></span>
+      <!-- Checkbox invisível -->
+      <input type="checkbox" id="menu-toggle" class="container__botao">
+
+      <!-- Botão hamburguer -->
+      <label for="menu-toggle" class="container__rotulo">
+        <span class="cabecalho__menu__hamburguer"></span>
       </label>
+
+      <!-- Lista do menu -->
       <ul class="lista-menu">
         <li class="lista-menu__item">
           <button onclick="abrirFormulario('incidente')">Incidente</button>
@@ -37,6 +49,7 @@
       </ul>
     </div>
   </nav>
+
 
   <div id="conteudo"></div>
 

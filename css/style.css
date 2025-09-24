@@ -1,32 +1,465 @@
-@import url(./form.css);
-@import url(./menu.css);
-@import url(./resultado.css);
-@import url(./listaMenu.css);
+/* ================================
+   Reset/Variáveis
+   ================================ */
+@import url(./responsividade.css);
+:root {
+    --bg: #0b1020;
+    --bg-elev: rgba(255, 255, 255, 0.06);
+    --panel: rgba(17, 25, 40, 0.75);
+    --panel-border: rgba(255, 255, 255, 0.18);
+    --text: #e8eef7;
+    --muted: #9fb0c7;
+    --primary: #3b82f6;
+    --primary-600: #2563eb;
+    --primary-700: #1e40af;
+    --accent: #10b981;
+    --border: rgba(255, 255, 255, 0.12);
+    --radius: 16px;
+    --shadow: 0 20px 40px rgba(2, 8, 23, 0.45);
+    --shadow-sm: 0 6px 18px rgba(2, 8, 23, 0.35);
+    --container: 1000px;
+}
 
-/* ===== Reset Básico ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(45deg, #0026ff, #5d5fee, #796bfa, #0026ff);
-  height: 100vh;
-  margin: 0;
-  color: #000000;
-  padding: 20px;
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    color: var(--text);
+    /* Fundo único (sem duplicar) */
+    background:
+        radial-gradient(900px 500px at 10% -10%, rgba(59, 130, 246, 0.18), transparent 45%),
+        radial-gradient(900px 500px at 90% 0%, rgba(16, 185, 129, 0.14), transparent 45%),
+        linear-gradient(180deg, #0b1020 0%, #0b0f1a 100%);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Centraliza tudo na horizontal */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-/* ===== Título ===== */
-h1 {
-  text-align: center;
-  margin-bottom: 30px;
-  color: #ffffff;
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ================================
+   Header
+   ================================ */
+.header {
+    width: 100%;
+    max-width: var(--container);
+    padding: 28px 16px 16px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    /* centraliza logo e título */
+    border-bottom: 1px solid var(--border);
+    position: relative;
+}
+
+.header::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    width: min(460px, 90%);
+    height: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+}
+
+.logo {
+    height: 48px;
+    width: auto;
+    filter: drop-shadow(var(--shadow-sm));
+}
+
+.titulo {
+    margin: 0;
+    font-size: clamp(22px, 2.8vw, 30px);
+    font-weight: 800;
+}
+
+/* ================================
+   Navbar / Menu
+   ================================ */
+.navbar {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(10px);
+    background: linear-gradient(180deg, rgba(12, 18, 34, 0.55), rgba(12, 18, 34, 0.35));
+    border-bottom: 1px solid var(--border);
+    z-index: 10;
+}
+
+.navbar .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: center;
+    /* centraliza o menu */
+    align-items: center;
+    gap: 10px;
+}
+
+/* Checkbox oculto (controla o menu via CSS) */
+.container__botao {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+    appearance: none;
+}
+
+/* Botão hambúrguer */
+.container__rotulo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    transition: transform .2s, background .2s, border-color .2s;
+}
+
+.container__rotulo:hover {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+/* Ícone hambúrguer (3 linhas) */
+.cabecalho__menu__hamburguer,
+.cabecalho__menu__hamburguer::before,
+.cabecalho__menu__hamburguer::after {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    content: "";
+    position: relative;
+    transition: transform .25s ease, opacity .2s ease, top .25s ease, background .2s;
+}
+
+.cabecalho__menu__hamburguer::before,
+.cabecalho__menu__hamburguer::after {
+    position: absolute;
+    left: 0;
+}
+
+.cabecalho__menu__hamburguer::before {
+    top: -7px;
+}
+
+.cabecalho__menu__hamburguer::after {
+    top: 7px;
+}
+
+#menu-toggle:checked+.container__rotulo .cabecalho__menu__hamburguer {
+    background: transparent;
+}
+
+#menu-toggle:checked+.container__rotulo .cabecalho__menu__hamburguer::before {
+    top: 0;
+    transform: rotate(45deg);
+    background: var(--primary);
+}
+
+#menu-toggle:checked+.container__rotulo .cabecalho__menu__hamburguer::after {
+    top: 0;
+    transform: rotate(-45deg);
+    background: var(--primary);
+}
+
+/* Lista do menu (mobile: drop) */
+.lista-menu {
+    list-style: none;
+    margin: 0;
+    padding: 8px;
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    top: calc(100% + 8px);
+    background: rgba(12, 18, 34, 0.9);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: max-height .28s ease, opacity .2s ease;
+    text-align: center;
+    /* centraliza texto dos itens */
+}
+
+/* abre via checkbox ou classe .active (suporte ao JS) */
+#menu-toggle:checked~.lista-menu,
+.lista-menu.active {
+    max-height: 340px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lista-menu li {
+    margin: 0;
+    padding: 0;
+}
+
+.lista-menu button {
+    width: 100%;
+    padding: 12px 14px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.04));
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 999px;
+    /* PILL */
+    cursor: pointer;
+    font-weight: 700;
+    letter-spacing: .2px;
+    transition: transform .08s ease, background .15s ease, border-color .15s ease;
+    text-align: center;
+}
+
+.lista-menu button:hover {
+    background: linear-gradient(180deg, rgba(59, 130, 246, 0.18), rgba(59, 130, 246, 0.06));
+    border-color: rgba(59, 130, 246, 0.35);
+}
+
+.lista-menu button:active {
+    transform: translateY(1px);
+}
+
+@media (min-width: 768px) {
+    .container__rotulo {
+        display: none;
+    }
+
+    /* esconde o hambúrguer no desktop */
+    .lista-menu {
+        position: static;
+        display: flex;
+        gap: 10px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+        max-height: none;
+        opacity: 1;
+        pointer-events: auto;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .lista-menu button {
+        width: auto;
+        padding: 10px 16px;
+    }
+}
+
+/* ================================
+   Conteúdo / Card do Form
+   ================================ */
+main {
+    width: 100%;
+    max-width: var(--container);
+    margin: 20px auto 40px;
+    padding: 0 16px;
+    display: flex;
+    justify-content: center;
+}
+
+#conteudo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Cartão (glassmorphism) */
+.form-wrapper {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 18px 16px;
+    border-radius: var(--radius);
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+    text-align: left;
+}
+
+.relatorio-form {
+    display: grid;
+    gap: 12px;
+}
+
+.relatorio-form h2 {
+    margin: 0 0 4px;
+    font-size: 20px;
+    letter-spacing: .2px;
+    color: #f1f5ff;
+}
+
+/* Campos */
+.campo {
+    display: grid;
+    gap: 6px;
+}
+
+.campo label {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="search"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 14px;
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    outline: none;
+    transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 96px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: rgba(59, 130, 246, 0.55);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.20);
+    background: rgba(255, 255, 255, 0.10);
+}
+
+/* Ações / Botões principais */
+.acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.relatorio-form button[type="submit"],
+.relatorio-form button[type="button"],
+.copiarBtn {
+    appearance: none;
+    border: 1px solid rgba(59, 130, 246, 0.45);
+    color: #fff;
+    padding: 11px 16px;
+    border-radius: 999px;
+    /* pill */
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: .25px;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.25);
+    background: linear-gradient(180deg, var(--primary) 0%, var(--primary-600) 100%);
+    transition: transform .08s ease, filter .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.relatorio-form button[type="button"] {
+    border-color: rgba(16, 185, 129, 0.35);
+    background: linear-gradient(180deg, rgba(16, 185, 129, 0.95), rgba(5, 150, 105, 0.95));
+    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.24);
+}
+
+.relatorio-form button[type="submit"]:hover,
+.copiarBtn:hover {
+    filter: brightness(1.05);
+}
+
+.relatorio-form button[type="submit"]:active,
+.copiarBtn:active {
+    transform: translateY(1px);
+    box-shadow: none;
+}
+
+#form-fechamento {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#form-fechamento .form-wrapper {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
 }
 
 
+#form-fechamento {
+    margin-top: 16px;
+}
 
 
+/* Resultado do relatório */
+.resultado {
+    margin-top: 10px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    color: var(--text);
+}
 
+/* Estados */
+.erro {
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(239, 68, 68, 0.12);
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    color: #fecaca;
+}
+
+/* Foco acessível */
+:focus-visible {
+    outline: 3px solid rgba(59, 130, 246, 0.45);
+    outline-offset: 3px;
+    border-radius: 12px;
+}
+
+/* Utilidades */
+.hide {
+    display: none !important;
+}
