@@ -169,7 +169,7 @@
                 "label": "Endereço Atualizado para envio"
             }
         ],
-        "template": "Laudo Técnico - Análise de Hardware\n\nChamado incidente: {{chamado}}\nNome do Colaborador afetado: {{colaborador}}\nE-mail Corporativo: {{email}}\nADM ou Loja: {{setor}}\nTelefone de Contato com DDD: {{telefone}}\nMarca e Modelo do Equipamento: {{modelo}}\nIMEI: {{imei}}\nS/N: {{serie}}\nHostname: {{hostname}}\nPrédio: {{predio}}\n\nProblema relatado pelo usuário: {{problema}}\nDetalhe o problema identificado pelo técnico: {{detalheProblema}}\nDetalhe os testes realizados: {{testes}}\nSolicitação após avaliação técnica: {{solicitacao}}\nDano Acidental: {{danoAcidental}}\n\nEndereço Atualizado para envio necessidade: {{endereco}}\nRua Iapo, 1408, 2º Andar, Prado Velho - Curitiba - PR – Brasil CEP 80215 223"
+        "template": "Laudo Técnico - Análise de Hardware\n\nChamado incidente: {{chamado}}\nNome do Colaborador afetado: {{colaborador}}\nE-mail Corporativo: {{email}}\nADM ou Loja: {{setor}}\nTelefone de Contato com DDD: {{telefone}}\nMarca e Modelo do Equipamento: {{modelo}}\nIMEI: {{imei}}\nS/N: {{serie}}\nHostname: {{hostname}}\nPrédio: {{predio}}\n\nProblema relatado pelo usuário: {{problema}}\nDetalhe o problema identificado pelo técnico: {{detalheProblema}}\nDetalhe os testes realizados: {{testes}}\nSolicitação após avaliação técnica: {{solicitacao}}\nDano Acidental: {{danoAcidental}}\n\nEndereço Atualizado para envio necessidade: {{endereco}}"
     },
     "periferico": {
         "titulo": "Entrega de Periférico",
